@@ -1,0 +1,28 @@
+# Environment variables and secrets
+.env
+
+# Python virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Uploaded/local files
+uploads/
+
+# Testing/cache files
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+legal_report.pdf
