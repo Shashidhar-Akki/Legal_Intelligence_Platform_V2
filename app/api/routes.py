@@ -12,6 +12,7 @@ from app.agents.graph import graph
 
 import shutil
 
+import os
 
 router = APIRouter()
 
@@ -22,6 +23,8 @@ router = APIRouter()
 
 @router.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
+
+    os.makedirs("uploads", exist_ok=True)
 
     file_path = f"uploads/{file.filename}"
 
