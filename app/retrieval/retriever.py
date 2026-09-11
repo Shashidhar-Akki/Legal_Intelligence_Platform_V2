@@ -11,10 +11,20 @@ def normalize_filename(filename: str) -> str:
 
     filename = filename.strip()
 
-    if not filename.lower().endswith(".pdf"):
-        filename = filename + ".PDF"
+    # If the user already provided .pdf/.PDF, keep it as-is
+    if filename.lower().endswith(".pdf"):
+        return filename
 
-    return filename
+    # Check existing Pinecone namespaces so extension case
+    # does not matter (.pdf vs .PDF)
+    stats = index.describe_index_stats()
+
+    for namespace in stats["namespaces"]:
+        if namespace.lower() == (filename + ".pdf").lower():
+            return namespace
+
+    # Fallback
+    return filename + ".pdf"
 
 
 # 1. Create embedding model
